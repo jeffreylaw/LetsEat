@@ -1,0 +1,38 @@
+body {
+    background-color: #FFFFFA;
+}
+
+#main-div {
+    text-align: center;
+}
+
+#main-div li {
+    list-style-type: none;
+}
+
+#main-div li button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#restaurants-display {
+    display: none;
+    text-align: center;
+}
+
+.restaurant-div {
+    background-color: #EEF4ED;
+    margin: 10px;
+    padding: 5px;
+}
+
+.restaurant-name {
+    color: blue;
+    font-size: 1.2em;
+}
+
+.restaurant-name a, .restaurant-name a:visited {
+    text-decoration: none;
+    color: blue;
+}
+
