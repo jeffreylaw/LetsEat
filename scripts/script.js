@@ -11,7 +11,13 @@ function createFoodList() {
     document.getElementById("main-div").appendChild(list);
 }
 
+function clearRestaurantDisplay() {
+    restaurantDisplay.style.display = "none";
+    restaurantDisplay.innerHTML = '';
+}
+
 function addFood() {
+    clearRestaurantDisplay();
     let input = document.getElementById("food-textbox").value.toLowerCase();
     if (input !== null && input !== "") {
         document.getElementById("food-list").style.display = "block";
@@ -21,7 +27,7 @@ function addFood() {
             let foodItem = document.createElement("li");
             let inputNode = document.createTextNode(input);
             let removeItem = document.createElement("button");
-            let removeText = document.createTextNode("X");
+            let removeText = document.createTextNode("\u2717");
             removeItem.appendChild(removeText)
             foodItem.appendChild(inputNode);
             foodItem.appendChild(removeItem);
@@ -36,13 +42,13 @@ function addFood() {
 }
 
 function pickFood() {
-    document.getElementById("food-list").style.display = "block";
     let numOfFoodItems = foodList.length;
     if (numOfFoodItems > 0) {
         let randNum = Math.floor(Math.random() * numOfFoodItems);
         chosenFood = foodList[randNum];
         document.getElementById("display").innerHTML = "<b>It's " + chosenFood + " time!&#128516;</b>";
     }
+    searchRestaurants();
 }
 
 function searchRestaurants() {
@@ -75,6 +81,8 @@ function searchRestaurants() {
                     currentSearchIndex++;
                 }
                 restaurantDisplay.innerHTML = innerHtml;
+                removeFoodItems();
+                foodList.length = 0;
             },
         })
     }
@@ -112,9 +120,16 @@ function showMoreRestaurants() {
     })
 }
 
+function removeFoodItems() {
+    let parent = document.getElementById("food-list");
+    while (parent.firstChild) {
+        parent.firstChild.remove();
+    }
+}
+
 
 createFoodList();
 document.getElementById("food-submit").addEventListener('click', addFood);
 document.getElementById("decide-button").addEventListener('click', pickFood);
-document.getElementById("search-button").addEventListener('click', searchRestaurants);
+// document.getElementById("search-button").addEventListener('click', searchRestaurants);
 document.getElementById("more-button").addEventListener('click', showMoreRestaurants)
