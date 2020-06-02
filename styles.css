@@ -1,5 +1,5 @@
 body {
-    background-color: #FFFFFA;
+    background-color: #FFF;
 }
 
 #main-div {
@@ -20,8 +20,19 @@ body {
     text-align: center;
 }
 
-.restaurant-div {
-    background-color: #d5e1df;
+.card {
+    display: inline-block;
+    margin: 2.5px;
+}
+
+.img-responsive {
+    /* width: auto;
+    height: 200px; */
+}
+
+
+/* .restaurant-div {
+    background-color: #fbfbfb;
     margin: 10px;
     padding: 5px;
 }
@@ -35,4 +46,4 @@ body {
     text-decoration: none;
     color: blue;
 }
-
+ */
