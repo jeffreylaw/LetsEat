@@ -10,7 +10,8 @@ var timer;
 
 function setPosition(position) {
     latitude = position.coords.latitude;
-    longitude = 
+    longitude = position.coords.longitude;
+    console.log(position)
     coordsDisplay.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
 }
 
@@ -60,15 +61,13 @@ function pickFood() {
         chosenFood = foodList[randNum];
         document.getElementById("display").innerHTML = "<h2>It's " + chosenFood + " time!&#128516;</h2>";
         getPosition();
-    } else {
-        $('decide-button').popover('show');
-
     }
 }
 
 function getPosition() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
+            setPosition(position)
             searchRestaurants(position.coords.longitude, position.coords.latitude);
         });
     } else {
@@ -125,18 +124,6 @@ function removeFoodItems() {
     foodList.length = 0;
 }
 
-$(window).scroll(function() {
-    if($(window).scrollTop() >= ($(document).height() - $(window).height() - 200)) {
-        if (timer) {
-            window.clearTimeout(timer);
-        }
-        timer = window.setTimeout(function() {
-            getPosition();
-        }, 100);
-        console.log(currentSearchIndex)
-    }
-});
-
 createFoodList();
 document.getElementById("food-submit").addEventListener('click', addFood);
 document.getElementById("food-textbox").addEventListener('keydown', function(event) {
@@ -147,6 +134,3 @@ document.getElementById("food-textbox").addEventListener('keydown', function(eve
 });
 
 document.getElementById("decide-button").addEventListener('click', pickFood);
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover();
-  });
