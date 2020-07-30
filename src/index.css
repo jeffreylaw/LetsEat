@@ -1,0 +1,67 @@
+/* Background pattern from Toptal Subtle Patterns */
+body {
+  background-image: url('./images/dust_scratches.png')
+}
+
+.success {
+  color: green;
+  background: lightgrey;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}  
+
+.error {
+  color: red;
+  background: lightgrey;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.test {
+  margin: 20px;
+  margin-bottom: 60px;
+}
+
+#pageUp {
+  height: 45px;
+  width: 45px;
+  opacity: 0.7;
+  -moz-transform: rotate(270deg);
+  -webkit-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+}
+
+.birdIcon {
+  height: 50px;
+  width: auto;
+}
+
+.centerText {
+  text-align: center;
+}
+
+
+.intro-p {
+  /* width: 30em;
+  margin-left: 2em; */
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+@media screen and (min-width: 600px) {
+  .intro-p {
+    width: 30em;
+    margin-left: 2em;
+  }
+}
