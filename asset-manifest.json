@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/jeffreylaw/lets-eat/static/css/main.a30e685c.chunk.css",
+    "main.js": "/jeffreylaw/lets-eat/static/js/main.ba35df38.chunk.js",
+    "main.js.map": "/jeffreylaw/lets-eat/static/js/main.ba35df38.chunk.js.map",
+    "runtime-main.js": "/jeffreylaw/lets-eat/static/js/runtime-main.f35558af.js",
+    "runtime-main.js.map": "/jeffreylaw/lets-eat/static/js/runtime-main.f35558af.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/jeffreylaw/lets-eat/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.ef4aaf3b.chunk.js": "/jeffreylaw/lets-eat/static/js/2.ef4aaf3b.chunk.js",
+    "static/js/2.ef4aaf3b.chunk.js.map": "/jeffreylaw/lets-eat/static/js/2.ef4aaf3b.chunk.js.map",
+    "index.html": "/jeffreylaw/lets-eat/index.html",
+    "precache-manifest.ba1da08409c90b5990eaa85e023934fc.js": "/jeffreylaw/lets-eat/precache-manifest.ba1da08409c90b5990eaa85e023934fc.js",
+    "service-worker.js": "/jeffreylaw/lets-eat/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/jeffreylaw/lets-eat/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.a30e685c.chunk.css.map": "/jeffreylaw/lets-eat/static/css/main.a30e685c.chunk.css.map",
+    "static/js/2.ef4aaf3b.chunk.js.LICENSE.txt": "/jeffreylaw/lets-eat/static/js/2.ef4aaf3b.chunk.js.LICENSE.txt",
+    "static/media/cute.svg": "/jeffreylaw/lets-eat/static/media/cute.12bc02f1.svg",
+    "static/media/dishes.svg": "/jeffreylaw/lets-eat/static/media/dishes.fb0434cc.svg",
+    "static/media/index.css": "/jeffreylaw/lets-eat/static/media/dust_scratches.608ab5fe.png",
+    "static/media/non_existent_image2.jpg": "/jeffreylaw/lets-eat/static/media/non_existent_image2.7e62e439.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f35558af.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.ef4aaf3b.chunk.js",
+    "static/css/main.a30e685c.chunk.css",
+    "static/js/main.ba35df38.chunk.js"
+  ]
+}
