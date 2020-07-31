@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7f32815f42b967c180838fd62b55b8e5",
+    "revision": "7ddc7f8c61ad1223ee5651d284fb6701",
     "url": "/lets-eat/index.html"
   },
   {
-    "revision": "7cdeb359d3dc85546b3b",
+    "revision": "a2316cdb124778cfdab3",
     "url": "/lets-eat/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "dfe659946b8fccf103c0",
-    "url": "/lets-eat/static/css/main.13a77c32.chunk.css"
+    "revision": "134ecffef16eaa3fa66d",
+    "url": "/lets-eat/static/css/main.e2d5fc83.chunk.css"
   },
   {
-    "revision": "7cdeb359d3dc85546b3b",
-    "url": "/lets-eat/static/js/2.ef4aaf3b.chunk.js"
+    "revision": "a2316cdb124778cfdab3",
+    "url": "/lets-eat/static/js/2.11c35fde.chunk.js"
   },
   {
     "revision": "5ac48c47bb3912b14c2d8de4f56d5ae8",
-    "url": "/lets-eat/static/js/2.ef4aaf3b.chunk.js.LICENSE.txt"
+    "url": "/lets-eat/static/js/2.11c35fde.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "dfe659946b8fccf103c0",
-    "url": "/lets-eat/static/js/main.ba35df38.chunk.js"
+    "revision": "134ecffef16eaa3fa66d",
+    "url": "/lets-eat/static/js/main.694c5336.chunk.js"
   },
   {
     "revision": "a5256494d3ff318c0c43",
@@ -34,10 +34,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "fb0434cc7fb041f58722269fcf14efa7",
     "url": "/lets-eat/static/media/dishes.fb0434cc.svg"
-  },
-  {
-    "revision": "608ab5fe4a45e2ac93febd3416b260f0",
-    "url": "/lets-eat/static/media/dust_scratches.608ab5fe.png"
   },
   {
     "revision": "7e62e439a81332a3953c29c62f286afe",
