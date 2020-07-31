@@ -47,17 +47,22 @@ const App = () => {
             setTimeout(() => {
               setResponseMessage(null)
             }, 2000)
+            setLoading(false)
+            newSearch()
+            return
           }
-          setRestaurantList(prev => {
-            return prev.concat(restaurantsData)
-          })
+          if (restaurantsData.length > 0) {
+            setRestaurantList(prev => {
+              return prev.concat(restaurantsData)
+            })
+          }
           if (startingIndex === 0) {
             window.scrollTo({ top: addItemsRef.current.offsetTop - 10, behavior: 'smooth'})
           }
           setLoading(false)
         })
         .catch((error) => {
-          setErrorMessage(`Error: ${errorMessage}`)
+          setErrorMessage(`Error: ${error}`)
           setTimeout(() => {
             setLoading(false)
             setErrorMessage(null)
@@ -239,7 +244,7 @@ const App = () => {
           <FoodList foodList={showFoodList ? foodList : []} setFoodList={setFoodList} />
         </Row>
         <Row className="justify-content-center">
-          { spinning && foodList.length > 0 && <Slider foodList={foodList} setChosenFood={setChosenFood} setSpinning={setSpinning} setFoodList={setFoodList} /> }
+          { spinning && foodList.length > 0 && <Slider foodList={foodList} setChosenFood={setChosenFood} setSpinning={setSpinning} setFoodList={setFoodList} spinning={spinning} chosenFood={chosenFood} /> }
         </Row>
       </Container>
 

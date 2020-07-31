@@ -1,38 +1,45 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-const Slider = ({foodList, setChosenFood, setSpinning, setFoodList}) => {
+const Slider = ({foodList, setChosenFood, setSpinning, setFoodList, spinning, chosenFood}) => {
     const sliderRef = useRef(null)
-    let list = [].concat(...Array(10).fill(foodList))
-    // let list = [].concat(foodList).concat(foodList).concat(foodList).concat(foodList).concat(foodList)
-    console.log(list)
-    const randomChosenFood = list[Math.floor(Math.random() * list.length)]
-    // list = [].concat(...Array(4).fill(list))
-    console.log('number of things', list.length, 'randomchosen', randomChosenFood)
-    
+    const [randomChosenFood, setRandomChosenFood] = useState('')
+    const [expandedList, setExpandedList] = useState([])
+    console.log(randomChosenFood)
     useEffect(() => {
-        const spunCallback = () => {
-            console.log('Callback')
-            setTimeout(() => {
-                setSpinning(false)
-                setChosenFood(randomChosenFood)
-                setFoodList([])
-            }, 1000)
+        if (spinning) {
+            console.log('a')
+            setExpandedList([].concat(...Array(10).fill(foodList)))
+            setRandomChosenFood(foodList[Math.floor(Math.random() * foodList.length)])
         }
+    }, [foodList, spinning])
 
-        sliderRef.current.addEventListener('animationend', spunCallback)
-    }, [setSpinning, setChosenFood, randomChosenFood, setFoodList])
+    useEffect(() => {
+        document.documentElement.style.setProperty('--item-count', expandedList.length)
+        document.documentElement.style.setProperty('--chosen-i', expandedList.lastIndexOf(randomChosenFood))
+    }, [expandedList, randomChosenFood])
 
-    document.documentElement.style
-    .setProperty('--item-count', list.length)
+    useEffect(() => {
+        if (chosenFood === '' && randomChosenFood.length > 0) {
+            const spunCallback = () => {
+                console.log('Callback')
+                setTimeout(() => {
+                    setSpinning(false)
+                    setChosenFood(randomChosenFood)
+                    // setRandomChosenFood('')
+                    setFoodList([])
+                }, 1000)
+            }
+            sliderRef.current.addEventListener('animationend', spunCallback)
+        }
+    }, [setSpinning, setChosenFood, randomChosenFood, setFoodList, chosenFood])
 
-    document.documentElement.style
-    .setProperty('--chosen-i', list.lastIndexOf(randomChosenFood))
     
     return (
         <div className='slider'>
+            {randomChosenFood}
             <div className='box'>
                 <ul className='sliderList' ref={sliderRef}>
-                    {list.map((food, i) => {
+                    {expandedList.map((food, i) => {
                         return <li key={i} className='sliderItem'>{food}</li>
                     })}
                 </ul>
