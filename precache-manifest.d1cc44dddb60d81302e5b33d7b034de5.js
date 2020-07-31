@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7ddc7f8c61ad1223ee5651d284fb6701",
+    "revision": "fdb24f7c87d1fcdd6114a017f96022a7",
     "url": "/lets-eat/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/lets-eat/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "134ecffef16eaa3fa66d",
+    "revision": "07eb3aa878b61d7fc6f5",
     "url": "/lets-eat/static/css/main.e2d5fc83.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/lets-eat/static/js/2.11c35fde.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "134ecffef16eaa3fa66d",
-    "url": "/lets-eat/static/js/main.694c5336.chunk.js"
+    "revision": "07eb3aa878b61d7fc6f5",
+    "url": "/lets-eat/static/js/main.86d90ee5.chunk.js"
   },
   {
     "revision": "a5256494d3ff318c0c43",
