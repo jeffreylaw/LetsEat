@@ -1,13 +1,10 @@
 :root {
-  --item-count: 0;
+  --item-count: 1;
   --chosen-i: 0;
 }
 
-
-/* Background pattern from Toptal Subtle Patterns */
 body {
   background-color: rgb(242, 253, 255);
-  /* background-image: url('./images/dust_scratches.png') */
 }
 
 .success {
@@ -139,7 +136,6 @@ body {
     transform: translateY(0);
   }
   to {
-    /* transform: translateY(calc((-100% / var(--item-count)) * (var(--item-count) - 1.2))); */
       transform: translateY(calc(-100% / var(--item-count) *  var(--chosen-i)));
   }
 }
