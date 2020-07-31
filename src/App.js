@@ -121,8 +121,6 @@ const App = () => {
     }
     setShowFoodList(false)
     setSpinning(true)
-    // setFoodList([])
-    // setChosenFood(foodList[Math.floor(Math.random() * foodList.length)])
   }
 
   const newSearch = () => {
@@ -164,7 +162,6 @@ const App = () => {
   const handleSetLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        // console.log('Setting location...', position)
         setCoordinates({longitude: position.coords.longitude, latitude: position.coords.latitude})
       }, showError, { enableHighAccuracy: true, maximumAge: 0, timeout: 5000 })
     } else {
@@ -221,7 +218,7 @@ const App = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>
-                Created by: <a>Jeffrey Law</a>
+                Created by: <a href="https://github.com/jeffreylaw" target="_blank" rel="noopener noreferrer" >Jeffrey Law</a>
               </Navbar.Text>
             </Navbar.Collapse>
           </Navbar.Collapse>
@@ -251,15 +248,13 @@ const App = () => {
       <Container fluid>
           <RestaurantList restaurants={restaurantList} coordinates={coordinates} />
 
-          <Row className="justify-content-center restaurant-display" ref={restaurantsRef}>
+          <Row className="justify-content-center mt-3 mb-1" ref={restaurantsRef}>
             { loading && <Loader type='Circles' color='#00BFFF' /> }
             { !loading && chosenFood && restaurantList.length > 0 && restaurantList.length !== 100 && <Button onClick={() => setStartingIndex(startingIndex + 20)}>Show more restaurants</Button> }
-          {/* <Button style={{ display: (restaurantList.length > 0 && showUpButton) ? 'inline-block' : 'none' }} id="pageUp" onMouseDown={(e) => e.preventDefault()} onClick={() => window.scrollTo({ top: addItemsRef.current.offsetTop - 10, behavior: 'smooth'})}>{'\u27a4'}</Button> */}
           </Row>
-          <Row className="justify-content-center mb-5">
+          <Row className="justify-content-center bottom-div">
               <Notification message={additionalResponseMessage} type='error' />
               <Button style={{ display: (restaurantList.length > 0 && showUpButton) ? 'inline-block' : 'none' }} id="pageUp" onMouseDown={(e) => e.preventDefault()} onClick={() => window.scrollTo({ top: addItemsRef.current.offsetTop - 10, behavior: 'smooth'})}>{'\u27a4'}</Button>
-
             </Row>
         </Container>
     </div>
