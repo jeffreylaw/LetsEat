@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container'
 
 
 const RestaurantList = ({ restaurants, coordinates }) => {
-    console.log(restaurants)
+    // console.log(restaurants)
     return (
         <Container fluid>
             <Row className="justify-content-md-center">

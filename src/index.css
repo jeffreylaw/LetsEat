@@ -1,6 +1,13 @@
+:root {
+  --item-count: 0;
+  --chosen-i: 0;
+}
+
+
 /* Background pattern from Toptal Subtle Patterns */
 body {
-  background-image: url('./images/dust_scratches.png')
+  background-color: rgb(242, 253, 255);
+  /* background-image: url('./images/dust_scratches.png') */
 }
 
 .success {
@@ -23,9 +30,26 @@ body {
   margin-bottom: 10px;
 }
 
-.test {
+.restaurant-display {
   margin: 20px;
   margin-bottom: 60px;
+}
+
+.list-item {
+  background-color: rgb(242, 253, 255);
+}
+
+.btn-power-blue {
+  background-color: #0CB9C2 !important;
+  border-color: #0CB9C2;
+}
+
+.btn-danger {
+  opacity: 0.85;
+}
+
+.navbar {
+  background-color: #26262A !important;
 }
 
 #pageUp {
@@ -59,9 +83,71 @@ body {
   padding-left: 20px;
 }
 
+
+.sliderList {
+  margin: 0; 
+  padding: 0;
+  animation: scrollUp 4s .16s 1 forwards;
+}
+
+.slider {
+  height: 100%;
+  display: flex;
+  font-size: 22px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.box {
+  height: 60px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.box::before {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  content: '';
+  height: 30px;
+  position: absolute;
+  background: linear-gradient(180deg, rgba(242, 253, 255, 1), rgba(255,255,255,0));
+}
+
+.box::after {
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  content: '';
+  height: 30px;
+  position: absolute;
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(242, 253, 255, 1));
+}
+
+.sliderItem {
+  opacity: 1;
+  height: 50px;
+  padding: 10px;
+  list-style: none; 
+}
+
+@keyframes scrollUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    /* transform: translateY(calc((-100% / var(--item-count)) * (var(--item-count) - 1.2))); */
+      transform: translateY(calc(-100% / var(--item-count) *  var(--chosen-i)));
+  }
+}
+
 @media screen and (min-width: 600px) {
   .intro-p {
     width: 30em;
     margin-left: 2em;
   }
 }
+

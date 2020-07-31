@@ -10,7 +10,7 @@ const Restaurant = ({ restaurant, coordinates }) => {
 
     return (
         <Card style={{ width: '18rem', margin: '0 auto' }}>
-            <Card.Img variant="top" src={restaurant.thumb || require('../images/non_existent_image2.jpg') } />
+            <Card.Img variant="top" src={restaurant.thumb || require('../images/non_existent_image2.jpg')} />
             <Card.Body>
                 <Card.Title className='centerText'><a href={restaurant.url} target='_blank' rel='noopener noreferrer'>{restaurant.name}</a></Card.Title>
                 <Card.Subtitle className='text-dark'>{restaurant.location.address}</Card.Subtitle>

@@ -2,7 +2,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button'
 
 
-const AddItems = ({ restaurantList, newSearch, foodInput, handleFoodInputChange, addFoodItem, handleChooseButton}) => {
+const AddItems = ({ restaurantList, newSearch, foodInput, handleFoodInputChange, addFoodItem, handleChooseButton, spinning, loading}) => {
 
     if (restaurantList.length > 0) {
         return <Button onClick={newSearch}>Start new search</Button> 
@@ -11,7 +11,7 @@ const AddItems = ({ restaurantList, newSearch, foodInput, handleFoodInputChange,
     return (
         <>
             <input type="text" value={foodInput} onChange={handleFoodInputChange}/>
-            <Button onClick={addFoodItem} className='ml-1'>Add</Button><Button onClick={handleChooseButton} className='ml-1'>Decide for me</Button><br />
+            <Button onClick={addFoodItem} className='ml-1'>Add</Button><Button onClick={handleChooseButton} disabled={spinning || loading} className='ml-1 btn-power-blue'>Decide for me</Button><br />
         </>
     )
 }
