@@ -4,7 +4,7 @@ import Notification from './components/Notification'
 import RestaurantList from './components/RestaurantList'
 import AddItems from './components/AddItems'
 import Tutorial from './components/Tutorial'
-import Slider from './components/Slider'
+import Scroller from './components/Scroller'
 import restaurantService from './services/restaurants'
 import Loader from 'react-loader-spinner'
 import { Navbar, Button, Row, Container } from 'react-bootstrap'
@@ -18,6 +18,7 @@ const App = () => {
   const [coordinates, setCoordinates] = useState({longitude: null, latitude: null})
   const [errorMessage, setErrorMessage] = useState(null)
   const [responseMessage, setResponseMessage] = useState(null)
+  const [additionalResponseMessage, setAdditionalResponseMessage] = useState(null)
   const [restaurantList, setRestaurantList] = useState([])
   const [loading, setLoading] = useState(false)
   const [showUpButton, setShowUpButton] = useState(false)
@@ -38,9 +39,9 @@ const App = () => {
             return obj.restaurant
           })
           if (startingIndex > 0 && restaurantsData.length === 0) {
-              setResponseMessage(`No more restaurants found with the keyword: ${chosenFood}`)
+            setAdditionalResponseMessage(`No more restaurants found`)
               setTimeout(() => {
-                setResponseMessage(null)
+                setAdditionalResponseMessage(null)
               }, 2000)
           } else if (restaurantsData.length === 0) {
             setResponseMessage(`No restaurants found with the keyword: ${chosenFood}`)
@@ -184,7 +185,6 @@ const App = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // console.log(entry);
         if (entry.isIntersecting) {
           setShowUpButton(false)
         } else {
@@ -221,7 +221,7 @@ const App = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>
-                Created by: <a href="#login">Jeffrey Law</a>
+                Created by: <a>Jeffrey Law</a>
               </Navbar.Text>
             </Navbar.Collapse>
           </Navbar.Collapse>
@@ -244,17 +244,23 @@ const App = () => {
           <FoodList foodList={showFoodList ? foodList : []} setFoodList={setFoodList} />
         </Row>
         <Row className="justify-content-center">
-          { spinning && foodList.length > 0 && <Slider foodList={foodList} setChosenFood={setChosenFood} setSpinning={setSpinning} setFoodList={setFoodList} spinning={spinning} chosenFood={chosenFood} /> }
+          { spinning && foodList.length > 0 && <Scroller foodList={foodList} setChosenFood={setChosenFood} setSpinning={setSpinning} setFoodList={setFoodList} spinning={spinning} chosenFood={chosenFood} /> }
         </Row>
       </Container>
 
       <Container fluid>
           <RestaurantList restaurants={restaurantList} coordinates={coordinates} />
+
           <Row className="justify-content-center restaurant-display" ref={restaurantsRef}>
             { loading && <Loader type='Circles' color='#00BFFF' /> }
             { !loading && chosenFood && restaurantList.length > 0 && restaurantList.length !== 100 && <Button onClick={() => setStartingIndex(startingIndex + 20)}>Show more restaurants</Button> }
-          <Button style={{ display: (restaurantList.length > 0 && showUpButton) ? 'inline-block' : 'none' }} id="pageUp" onMouseDown={(e) => e.preventDefault()} onClick={() => window.scrollTo({ top: addItemsRef.current.offsetTop - 10, behavior: 'smooth'})}>{'\u27a4'}</Button>
+          {/* <Button style={{ display: (restaurantList.length > 0 && showUpButton) ? 'inline-block' : 'none' }} id="pageUp" onMouseDown={(e) => e.preventDefault()} onClick={() => window.scrollTo({ top: addItemsRef.current.offsetTop - 10, behavior: 'smooth'})}>{'\u27a4'}</Button> */}
           </Row>
+          <Row className="justify-content-center mb-5">
+              <Notification message={additionalResponseMessage} type='error' />
+              <Button style={{ display: (restaurantList.length > 0 && showUpButton) ? 'inline-block' : 'none' }} id="pageUp" onMouseDown={(e) => e.preventDefault()} onClick={() => window.scrollTo({ top: addItemsRef.current.offsetTop - 10, behavior: 'smooth'})}>{'\u27a4'}</Button>
+
+            </Row>
         </Container>
     </div>
   )
