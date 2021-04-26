@@ -122,6 +122,7 @@ const App = () => {
     }
     if (!locationSet()) {
       handleSetLocation()
+      return
     }
     setShowFoodList(false)
     setSpinning(true)
@@ -138,7 +139,7 @@ const App = () => {
   const showError = (error) => {
     switch(error.code) {
       case error.PERMISSION_DENIED:
-        setErrorMessage('Location permission was declined, please enable before trying again.')
+        setErrorMessage('Please allow location permission access before trying again.')
         setTimeout(() => { 
           setErrorMessage(null)
         }, 5000)

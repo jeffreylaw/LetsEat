@@ -33,6 +33,9 @@ body {
 
 .list-item {
   background-color: rgb(242, 253, 255);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .btn-power-blue {
