@@ -22,7 +22,7 @@ const App = () => {
   const [restaurantList, setRestaurantList] = useState([])
   const [loading, setLoading] = useState(false)
   const [showUpButton, setShowUpButton] = useState(false)
-  const addItemsRef = useRef()
+  const addItemsRef = useRef(null)
   const restaurantsRef = useRef()
   const tutorialRef = useRef()
   const [spinning, setSpinning] = useState(false)
@@ -57,10 +57,14 @@ const App = () => {
               return prev.concat(restaurantsData)
             })
           }
-          if (startingIndex === 0) {
-            window.scrollTo({ top: addItemsRef.current.offsetTop - 10, behavior: 'smooth'})
-          }
           setLoading(false)
+        })
+        .then(() => {
+          if (startingIndex === 0) {
+            setTimeout(function() { 
+            window.scrollTo({ top: addItemsRef.current.offsetTop - 10, behavior: 'smooth'})
+          }, 100)
+          }
         })
         .catch((error) => {
           setErrorMessage(`Error: ${error}`)
