@@ -3,7 +3,7 @@ import FoodList from './components/FoodList'
 import Notification from './components/Notification'
 import RestaurantList from './components/RestaurantList'
 import AddItems from './components/AddItems'
-import Tutorial from './components/Tutorial'
+import Intro from './components/Intro'
 import Scroller from './components/Scroller'
 import restaurantService from './services/restaurants'
 import Loader from 'react-loader-spinner'
@@ -15,7 +15,7 @@ const App = () => {
   const [foodInput, setFoodInput] = useState('')
   const [chosenFood, setChosenFood] = useState('')
   const [startingIndex, setStartingIndex] = useState(0)
-  const [coordinates, setCoordinates] = useState({longitude: null, latitude: null})
+  const [coordinates, setCoordinates] = useState({ longitude: null, latitude: null })
   const [errorMessage, setErrorMessage] = useState(null)
   const [responseMessage, setResponseMessage] = useState(null)
   const [additionalResponseMessage, setAdditionalResponseMessage] = useState(null)
@@ -26,62 +26,73 @@ const App = () => {
   const restaurantsRef = useRef()
   const tutorialRef = useRef()
   const [spinning, setSpinning] = useState(false)
+  const [navbarClass, setNavbarClass] = useState("navbar-transparent");
 
+  useEffect(() => {
+    window.addEventListener("scroll", listenScrollEvent);
+  })
+
+  const listenScrollEvent = () => {
+    window.scrollY > 100
+      ? setNavbarClass("navbar-white")
+      : setNavbarClass("navbar-transparent")
+  }
+  
   useEffect(() => {
     if (chosenFood && coordinates.latitude && coordinates.longitude) {
       const getRestaurants = () => {
         setLoading(true)
         restaurantService
-        .get(chosenFood, coordinates, startingIndex)
-        .then(restaurantsData => {
-          restaurantsData = restaurantsData.map(obj => {
-            delete obj.restaurant.apikey
-            return obj.restaurant
-          })
-          if (startingIndex > 0 && restaurantsData.length === 0) {
-            setAdditionalResponseMessage(`No more restaurants found`)
+          .get(chosenFood, coordinates, startingIndex)
+          .then(restaurantsData => {
+            restaurantsData = restaurantsData.map(obj => {
+              delete obj.restaurant.apikey
+              return obj.restaurant
+            })
+            if (startingIndex > 0 && restaurantsData.length === 0) {
+              setAdditionalResponseMessage(`No more restaurants found`)
               setTimeout(() => {
                 setAdditionalResponseMessage(null)
               }, 2000)
-          } else if (restaurantsData.length === 0) {
-            setResponseMessage(`No restaurants found with the keyword: ${chosenFood}`)
+            } else if (restaurantsData.length === 0) {
+              setResponseMessage(`No restaurants found with the keyword: ${chosenFood}`)
+              setTimeout(() => {
+                setResponseMessage(null)
+              }, 2000)
+              setLoading(false)
+              newSearch()
+              return
+            }
+            if (restaurantsData.length > 0) {
+              setRestaurantList(prev => {
+                return prev.concat(restaurantsData)
+              })
+            }
+            setLoading(false)
+          })
+          .then(() => {
+            if (startingIndex === 0) {
+              setTimeout(function () {
+                window.scrollTo({ top: addItemsRef.current.offsetTop - 10 - (5 * window.innerHeight/100), behavior: 'smooth' })
+              }, 100)
+            }
+          })
+          .catch((error) => {
+            setErrorMessage(`Error: ${error}`)
             setTimeout(() => {
-              setResponseMessage(null)
-            }, 2000)
-            setLoading(false)
-            newSearch()
-            return
-          }
-          if (restaurantsData.length > 0) {
-            setRestaurantList(prev => {
-              return prev.concat(restaurantsData)
-            })
-          }
-          setLoading(false)
-        })
-        .then(() => {
-          if (startingIndex === 0) {
-            setTimeout(function() { 
-            window.scrollTo({ top: addItemsRef.current.offsetTop - 10, behavior: 'smooth'})
-          }, 100)
-          }
-        })
-        .catch((error) => {
-          setErrorMessage(`Error: ${error}`)
-          setTimeout(() => {
-            setLoading(false)
-            setErrorMessage(null)
-          }, 3000)        
-        })
+              setLoading(false)
+              setErrorMessage(null)
+            }, 3000)
+          })
       }
       getRestaurants()
     }
-  
+
   }, [chosenFood, coordinates, startingIndex, errorMessage])
 
   const handleFoodInputChange = (event) => {
     setFoodInput(event.target.value)
-  } 
+  }
 
   const addFoodItem = () => {
     const newFoodItem = foodInput.toLowerCase().trim()
@@ -98,14 +109,14 @@ const App = () => {
       setResponseMessage('Item name cannot contain & character')
       setTimeout(() => {
         setResponseMessage(null)
-      }, 1000) 
+      }, 1000)
       return
     }
     if (foodList.includes(newFoodItem)) {
       setResponseMessage('Food item is already in the list')
       setTimeout(() => {
         setResponseMessage(null)
-      }, 1000)
+      }, 2000)
     }
     if (!foodList.includes(newFoodItem) && newFoodItem.length > 0) {
       setFoodList(foodList.concat(newFoodItem))
@@ -137,28 +148,28 @@ const App = () => {
   }
 
   const showError = (error) => {
-    switch(error.code) {
+    switch (error.code) {
       case error.PERMISSION_DENIED:
         setErrorMessage('Please allow location permission access before trying again.')
-        setTimeout(() => { 
+        setTimeout(() => {
           setErrorMessage(null)
         }, 5000)
         break;
       case error.POSITION_UNAVAILABLE:
         setErrorMessage('Location information is unavailable.')
-        setTimeout(() => { 
+        setTimeout(() => {
           setErrorMessage(null)
         }, 5000)
         break;
       case error.TIMEOUT:
         setErrorMessage('The request to get user location timed out.')
-        setTimeout(() => { 
+        setTimeout(() => {
           setErrorMessage(null)
         }, 5000)
         break;
       default:
         setErrorMessage('An unknown error occurred.')
-        setTimeout(() => { 
+        setTimeout(() => {
           setErrorMessage(null)
         }, 5000)
     }
@@ -167,11 +178,11 @@ const App = () => {
   const handleSetLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        setCoordinates({longitude: position.coords.longitude, latitude: position.coords.latitude})
+        setCoordinates({ longitude: position.coords.longitude, latitude: position.coords.latitude })
       }, showError, { enableHighAccuracy: true, maximumAge: 0, timeout: 5000 })
     } else {
       setErrorMessage('Geolocation is not supported by this browser')
-      setTimeout(() => { 
+      setTimeout(() => {
         setErrorMessage(null)
       }, 5000)
     }
@@ -210,14 +221,15 @@ const App = () => {
     setFoodInput('')
     setChosenFood('')
     setStartingIndex(0)
-    setCoordinates({longitude: null, latitude: null})
+    setCoordinates({ longitude: null, latitude: null })
     setRestaurantList([])
     setShowUpButton(false)
   }
 
   return (
     <div>
-        <Navbar bg="dark" variant="dark" expand="lg">
+      <Container fluid className="main-div">
+        <Navbar fixed="top" expand="lg" className={navbarClass}>
           <Navbar.Brand href="#" onClick={() => clearState()}>LetsEat</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -228,13 +240,30 @@ const App = () => {
             </Navbar.Collapse>
           </Navbar.Collapse>
         </Navbar>
-      <Container fluid>
-        <Row className="justify-content-center">
-            <Notification message={errorMessage} type='error' />
+        <Row className="">
+          <Notification message={errorMessage} type='error' />
         </Row>
-        <Row ref={tutorialRef}>
-          <Tutorial />
+        <Row ref={tutorialRef} className="intro-div align-items-center">
+          <Intro />
         </Row>
+      </Container>
+
+      <Container id="main">
+        <Row className="tutorial-div">
+        <img src={require('./images/dishes.svg')} style={{ width: '16rem' }} alt='dishes with smiley face' />
+
+          <ol>
+            <h1>How to use</h1>
+            <li>Enter dishes or cuisines that you might like to eat.</li>
+            <li>Let us randomly choose an item from the list.</li>
+            <li>Browse through the relevant restaurants around your location.*</li>
+            <p><small>*Access to your location required. Accuracy may vary on PC devices.</small></p>
+          </ol>
+        </Row>
+      </Container>
+
+
+      <Container>
         <Row className="justify-content-center" ref={addItemsRef}>
           <AddItems restaurantList={restaurantList} newSearch={newSearch} foodInput={foodInput} handleFoodInputChange={handleFoodInputChange} addFoodItem={addFoodItem} handleChooseButton={handleChooseButton} spinning={spinning} loading={loading} />
         </Row>
@@ -242,26 +271,26 @@ const App = () => {
           <Notification message={responseMessage} type='error' />
         </Row>
         <Row className="justify-content-center">
-          { chosenFood && restaurantList.length > 0 && <h1>It's {chosenFood} time! <img className='birdIcon' src={require('./images/cute.svg')} alt='bird icon' /></h1> }
+          {chosenFood && restaurantList.length > 0 && <h1>It's {chosenFood} time! <img className='birdIcon' src={require('./images/cute.svg')} alt='bird icon' /></h1>}
           <FoodList foodList={showFoodList ? foodList : []} setFoodList={setFoodList} />
         </Row>
         <Row className="justify-content-center">
-          { spinning && foodList.length > 0 && <Scroller foodList={foodList} setChosenFood={setChosenFood} setSpinning={setSpinning} setFoodList={setFoodList} spinning={spinning} chosenFood={chosenFood} /> }
+          {spinning && foodList.length > 0 && <Scroller foodList={foodList} setChosenFood={setChosenFood} setSpinning={setSpinning} setFoodList={setFoodList} spinning={spinning} chosenFood={chosenFood} />}
         </Row>
       </Container>
 
       <Container fluid>
-          <RestaurantList restaurants={restaurantList} coordinates={coordinates} />
+        <RestaurantList restaurants={restaurantList} coordinates={coordinates} />
 
-          <Row className="justify-content-center mt-3 mb-1" ref={restaurantsRef}>
-            { loading && <Loader type='Circles' color='#00BFFF' /> }
-            { !loading && chosenFood && restaurantList.length > 0 && restaurantList.length !== 100 && <Button onClick={() => setStartingIndex(startingIndex + 20)}>Show more restaurants</Button> }
-          </Row>
-          <Row className="justify-content-center bottom-div">
-              <Notification message={additionalResponseMessage} type='error' />
-              <Button style={{ display: (restaurantList.length > 0 && showUpButton) ? 'inline-block' : 'none' }} id="pageUp" onMouseDown={(e) => e.preventDefault()} onClick={() => window.scrollTo({ top: addItemsRef.current.offsetTop - 10, behavior: 'smooth'})}>{'\u27a4'}</Button>
-            </Row>
-        </Container>
+        <Row className="justify-content-center mt-3 mb-1" ref={restaurantsRef}>
+          {loading && <Loader type='ThreeDots' color='#00BFFF' />}
+          {!loading && chosenFood && restaurantList.length > 0 && restaurantList.length !== 100 && <Button onClick={() => setStartingIndex(startingIndex + 20)}>Show more restaurants</Button>}
+        </Row>
+        <Row className="justify-content-center bottom-div">
+          <Notification message={additionalResponseMessage} type='error' />
+          <Button style={{ display: (restaurantList.length > 0 && showUpButton) ? 'inline-block' : 'none' }} id="pageUp" onMouseDown={(e) => e.preventDefault()} onClick={() => window.scrollTo({ top: addItemsRef.current.offsetTop - 10, behavior: 'smooth' })}>{'\u27a4'}</Button>
+        </Row>
+      </Container>
     </div>
   )
 }

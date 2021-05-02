@@ -3,8 +3,63 @@
   --chosen-i: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: rgb(242, 253, 255);
+  background-color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  color: black;
+}
+
+.main-div {
+  height: 100vh;
+  background-image: url("images/bg.jpg");
+  /* background:linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url("images/bg.jpg"); */
+  background-position: center;
+  background-size: cover;
+}
+
+.main-div > img {
+  filter: brightness(60%);
+}
+
+.intro-div {
+  height: 95vh;
+  color: #fbfbfb;
+}
+
+.intro-div .lead {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.intro-div .btn {
+  border-radius: 20px !important;
+  padding-left: 40px;
+  padding-right: 40px;
+  height: 40px;
+  color: black;
+  background-color: #fbfbfb;
+}
+
+.intro-div .btn:hover {
+  background-color: #fbfbfb;
+}
+
+.tutorial-div {
+  /* height: 400px; */
+  display: block;
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  margin-top: 60px;
+}
+
+.tutorial-div h1 {
+  font-weight: 700;
+  font-size: 42px;
 }
 
 .success {
@@ -27,16 +82,30 @@ body {
   margin-bottom: 10px;
 }
 
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body .btn {
+  margin-top: auto !important;
+}
+
 .bottom-div{
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 
 .list-item {
-  background-color: rgb(242, 253, 255);
+  /* background-color: rgb(65, 140, 153); */
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
+.list-group-item {
+  text-transform: uppercase;
+}
+
 
 .btn-power-blue {
   background-color: #0CB9C2 !important;
@@ -52,7 +121,22 @@ body {
 }
 
 .navbar {
-  background-color: #26262A !important;
+  height: 5vh;
+  font-weight: 600;
+}
+
+.navbar-transparent a, .navbar-transparent .navbar-text {
+  color: #fbfbfb !important;
+}
+
+.navbar-transparent {
+  background-color: transparent;
+  color: #fbfbfb;
+}
+
+.navbar-white {
+  background-color: white;
+  color: #2b2b2b;
 }
 
 #pageUp {
@@ -76,6 +160,11 @@ body {
 
 .centerText {
   text-align: center;
+}
+
+.centerText a {
+  color: #2b2b2b;
+  font-weight: bold;
 }
 
 .intro-p {
@@ -106,7 +195,7 @@ body {
 .scroller {
   height: 100%;
   display: flex;
-  font-size: 26px;
+  font-size: 32px;
   letter-spacing: .05em;
   text-transform: uppercase;
 }
@@ -126,7 +215,7 @@ body {
   content: '';
   height: 50px;
   position: absolute;
-  background: linear-gradient(180deg, rgba(242, 253, 255, 1), rgba(255,255,255,0));
+  background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,0));
 }
 
 .box::after {
@@ -137,7 +226,7 @@ body {
   content: '';
   height: 50px;
   position: absolute;
-  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(242, 253, 255, 1));
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0));
 }
 
 .scrollerItem {
@@ -145,6 +234,14 @@ body {
   height: 70px;
   padding: 10px;
   list-style: none; 
+}
+
+.alert {
+  position: fixed;
+  left: 50%;
+  top: calc(5vh);
+  transform: translate(-50%, 1%);
+  z-index: 1;
 }
 
 @keyframes scrollUp {
