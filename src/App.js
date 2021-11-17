@@ -150,7 +150,11 @@ const App = () => {
   const showError = (error) => {
     switch (error.code) {
       case error.PERMISSION_DENIED:
-        setErrorMessage('Please allow location permission access before trying again.')
+        let permission_err_msg = 'Please allow location permission access before trying again.'
+        if (navigator.userAgent.includes('Mac')) {
+          permission_err_msg = 'Please allow location permission access in browser and in MacOS security preferences before trying again.'
+        }
+        setErrorMessage(permission_err_msg)
         setTimeout(() => {
           setErrorMessage(null)
         }, 5000)
@@ -179,6 +183,7 @@ const App = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         setCoordinates({ longitude: position.coords.longitude, latitude: position.coords.latitude })
+        console.log(coordinates)
       }, showError, { enableHighAccuracy: true, maximumAge: 0, timeout: 5000 })
     } else {
       setErrorMessage('Geolocation is not supported by this browser')
