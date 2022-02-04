@@ -74,7 +74,7 @@ const App = () => {
           .then(() => {
             if (startingIndex === 0) {
               setTimeout(function () {
-                window.scrollTo({ top: addItemsRef.current.offsetTop - 10 - (5 * window.innerHeight/100), behavior: 'smooth' })
+                window.scrollTo({ top: addItemsRef.current.offsetTop - (5 * window.innerHeight/100) - 10, behavior: 'smooth' })
               }, 100)
             }
           })
