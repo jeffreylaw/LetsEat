@@ -173,15 +173,19 @@ body {
 }
 
 .scrollerList {
-  margin: 0; 
+  margin-top: 15px; 
   padding: 0;
-  /* animation: scrollUp 4s .15s 1 forwards, colorGradient 4s .15s 1 forwards; */
-  animation-name: scrollUp;
+  animation: scrollUp 4s forwards, colorGradient 4s forwards;
+  /* animation-name: scrollUp;
   animation-duration: 4s;
   animation-fill-mode: forwards;
+
+  animation-name: colorGradient;
+  animation-duration: 4s;
+  animation-fill-mode: forwards; */
 }
 
-/* @keyframes colorGradient {
+@keyframes colorGradient {
   0%   {color: #FF3E3E;}
   10%   {color: #FF3E77;}
   20%   {color: #FF3EDE;}
@@ -193,7 +197,7 @@ body {
   80%   {color: #63FF3E;}
   90%   {color: #EEFF3E;}
   100%   {color: #FF8C3E;}
-} */
+}
 
 .scroller {
   height: 100%;
@@ -211,7 +215,6 @@ body {
 }
 
 .scrollerItem {
-  opacity: 1;
   height: 80px;
   padding: 10px;
   list-style: none; 

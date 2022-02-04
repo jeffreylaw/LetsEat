@@ -24,9 +24,9 @@ const Scroller = ({foodList, setChosenFood, setSpinning, setFoodList, spinning, 
             <div className='box'>
                 <ul className='scrollerList' ref={scrollerRef} onAnimationEnd={() => {
                     console.log("Done spinning")
-                    setChosenFood(randomChosenFood)
-                    setFoodList([])
-                    setSpinning(false)
+                    // setChosenFood(randomChosenFood)
+                    // setFoodList([])
+                    // setSpinning(false)
                 }}>
                     {expandedList.map((food, i) => {
                         return <li key={i} className='scrollerItem'>{food}</li>
