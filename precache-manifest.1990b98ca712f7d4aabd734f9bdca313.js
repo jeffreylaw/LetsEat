@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "51ebef19bc4c8b733b727acf3b9b6fd4",
+    "revision": "2ab474cfbc625f6dc6e8b525002db233",
     "url": "/lets-eat/index.html"
   },
   {
-    "revision": "a98126863fad669d278c",
-    "url": "/lets-eat/static/css/2.af3c1da9.chunk.css"
+    "revision": "cab7ae4b3a10c6cd8e8a",
+    "url": "/lets-eat/static/css/2.3661fc73.chunk.css"
   },
   {
-    "revision": "f741d901057ed0f42f10",
-    "url": "/lets-eat/static/css/main.534b04d1.chunk.css"
+    "revision": "3686e37f58400faad1f9",
+    "url": "/lets-eat/static/css/main.e5d64770.chunk.css"
   },
   {
-    "revision": "a98126863fad669d278c",
-    "url": "/lets-eat/static/js/2.ebfc6b1a.chunk.js"
+    "revision": "cab7ae4b3a10c6cd8e8a",
+    "url": "/lets-eat/static/js/2.030733cf.chunk.js"
   },
   {
-    "revision": "5ac48c47bb3912b14c2d8de4f56d5ae8",
-    "url": "/lets-eat/static/js/2.ebfc6b1a.chunk.js.LICENSE.txt"
+    "revision": "282cad4058e83221804611932e7ca1ed",
+    "url": "/lets-eat/static/js/2.030733cf.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f741d901057ed0f42f10",
-    "url": "/lets-eat/static/js/main.dfacbb46.chunk.js"
+    "revision": "3686e37f58400faad1f9",
+    "url": "/lets-eat/static/js/main.b0210dcb.chunk.js"
   },
   {
     "revision": "a5256494d3ff318c0c43",

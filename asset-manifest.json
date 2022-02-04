@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/lets-eat/static/css/main.534b04d1.chunk.css",
-    "main.js": "/lets-eat/static/js/main.dfacbb46.chunk.js",
-    "main.js.map": "/lets-eat/static/js/main.dfacbb46.chunk.js.map",
+    "main.css": "/lets-eat/static/css/main.e5d64770.chunk.css",
+    "main.js": "/lets-eat/static/js/main.b0210dcb.chunk.js",
+    "main.js.map": "/lets-eat/static/js/main.b0210dcb.chunk.js.map",
     "runtime-main.js": "/lets-eat/static/js/runtime-main.b9e3d6f9.js",
     "runtime-main.js.map": "/lets-eat/static/js/runtime-main.b9e3d6f9.js.map",
-    "static/css/2.af3c1da9.chunk.css": "/lets-eat/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.ebfc6b1a.chunk.js": "/lets-eat/static/js/2.ebfc6b1a.chunk.js",
-    "static/js/2.ebfc6b1a.chunk.js.map": "/lets-eat/static/js/2.ebfc6b1a.chunk.js.map",
+    "static/css/2.3661fc73.chunk.css": "/lets-eat/static/css/2.3661fc73.chunk.css",
+    "static/js/2.030733cf.chunk.js": "/lets-eat/static/js/2.030733cf.chunk.js",
+    "static/js/2.030733cf.chunk.js.map": "/lets-eat/static/js/2.030733cf.chunk.js.map",
     "index.html": "/lets-eat/index.html",
-    "precache-manifest.099e2cc5bf1a836bd9765c9d1094e5d3.js": "/lets-eat/precache-manifest.099e2cc5bf1a836bd9765c9d1094e5d3.js",
+    "precache-manifest.1990b98ca712f7d4aabd734f9bdca313.js": "/lets-eat/precache-manifest.1990b98ca712f7d4aabd734f9bdca313.js",
     "service-worker.js": "/lets-eat/service-worker.js",
-    "static/css/2.af3c1da9.chunk.css.map": "/lets-eat/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.534b04d1.chunk.css.map": "/lets-eat/static/css/main.534b04d1.chunk.css.map",
-    "static/js/2.ebfc6b1a.chunk.js.LICENSE.txt": "/lets-eat/static/js/2.ebfc6b1a.chunk.js.LICENSE.txt",
+    "static/css/2.3661fc73.chunk.css.map": "/lets-eat/static/css/2.3661fc73.chunk.css.map",
+    "static/css/main.e5d64770.chunk.css.map": "/lets-eat/static/css/main.e5d64770.chunk.css.map",
+    "static/js/2.030733cf.chunk.js.LICENSE.txt": "/lets-eat/static/js/2.030733cf.chunk.js.LICENSE.txt",
     "static/media/index.css": "/lets-eat/static/media/bg.bf62ce10.jpg",
     "static/media/cute.svg": "/lets-eat/static/media/cute.12bc02f1.svg",
     "static/media/dishes.svg": "/lets-eat/static/media/dishes.fb0434cc.svg",
@@ -21,9 +21,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.b9e3d6f9.js",
-    "static/css/2.af3c1da9.chunk.css",
-    "static/js/2.ebfc6b1a.chunk.js",
-    "static/css/main.534b04d1.chunk.css",
-    "static/js/main.dfacbb46.chunk.js"
+    "static/css/2.3661fc73.chunk.css",
+    "static/js/2.030733cf.chunk.js",
+    "static/css/main.e5d64770.chunk.css",
+    "static/js/main.b0210dcb.chunk.js"
   ]
 }
