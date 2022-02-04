@@ -238,14 +238,9 @@ const App = () => {
       <Container fluid className="main-div">
         <Navbar fixed="top" expand="lg" className={navbarClass}>
           <Navbar.Brand href="#" onClick={() => clearState()}>LetsEat</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Navbar.Collapse className="justify-content-end">
-              <Navbar.Text>
+          <Navbar.Text>
                 Created by: <a href="https://github.com/jeffreylaw" target="_blank" rel="noopener noreferrer" >Jeffrey Law</a>
               </Navbar.Text>
-            </Navbar.Collapse>
-          </Navbar.Collapse>
         </Navbar>
         <Row className="">
           <Notification message={errorMessage} type='error' />
