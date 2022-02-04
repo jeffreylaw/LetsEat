@@ -270,7 +270,7 @@ const App = () => {
       </Container>
 
       <Container>
-        <Row className="justify-content-center" ref={addItemsRef}>
+        <Row className="justify-content-center test" ref={addItemsRef}>
           <AddItems restaurantList={restaurantList} newSearch={newSearch} foodInput={foodInput} handleFoodInputChange={handleFoodInputChange} addFoodItem={addFoodItem} handleChooseButton={handleChooseButton} spinning={spinning} loading={loading} />
         </Row>
         <Row className="justify-content-center mt-2">
@@ -294,7 +294,7 @@ const App = () => {
         </Row>
         <Row className="justify-content-center bottom-div">
           <Notification message={additionalResponseMessage} type='error' />
-          <Button style={{ display: (restaurantList.length > 0 && showUpButton) ? 'inline-block' : 'none' }} id="pageUp" onMouseDown={(e) => e.preventDefault()} onClick={() => window.scrollTo({ top: addItemsRef.current.offsetTop - 10, behavior: 'smooth' })}>{'\u27a4'}</Button>
+          <Button style={{ display: (restaurantList.length > 0 && showUpButton) ? 'inline-block' : 'none' }} id="pageUp" onMouseDown={(e) => e.preventDefault()} onClick={() => window.scrollTo({ top: addItemsRef.current.offsetTop - (5 * window.innerHeight/100) - 10, behavior: 'smooth' })}>{'\u27a4'}</Button>
         </Row>
       </Container>
     </div>
