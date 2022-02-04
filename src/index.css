@@ -55,7 +55,8 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 26px;
-  margin-top: 60px;
+  margin-top: 40px;
+  padding-top: 20px;
 }
 
 .tutorial-div h1 {
