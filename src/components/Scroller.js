@@ -6,8 +6,11 @@ const Scroller = ({foodList, setChosenFood, setSpinning, setFoodList, spinning, 
     const [expandedList, setExpandedList] = useState([])
     useEffect(() => {
         if (spinning) {
-            setExpandedList([].concat(...Array(10).fill(foodList)))
-            setRandomChosenFood(foodList[Math.floor(Math.random() * foodList.length)])
+            let arr = foodList.concat(foodList)
+            let randomFood = foodList[Math.floor(Math.random() * foodList.length)]
+            console.log(randomFood)
+            setExpandedList(arr)
+            setRandomChosenFood(randomFood)
         }
     }, [foodList, spinning])
 
@@ -15,25 +18,16 @@ const Scroller = ({foodList, setChosenFood, setSpinning, setFoodList, spinning, 
         document.documentElement.style.setProperty('--item-count', expandedList.length)
         document.documentElement.style.setProperty('--chosen-i', expandedList.lastIndexOf(randomChosenFood))
     }, [expandedList, randomChosenFood])
-
-    useEffect(() => {
-        if (chosenFood === '' && randomChosenFood.length > 0) {
-            const spunCallback = () => {
-                setTimeout(() => {
-                    setSpinning(false)
-                    setChosenFood(randomChosenFood)
-                    setFoodList([])
-                }, 1000)
-            }
-            scrollerRef.current.addEventListener('animationend', spunCallback)
-        }
-    }, [setSpinning, setChosenFood, randomChosenFood, setFoodList, chosenFood])
-
     
     return (
         <div className='scroller'>
             <div className='box'>
-                <ul className='scrollerList' ref={scrollerRef}>
+                <ul className='scrollerList' ref={scrollerRef} onAnimationEnd={() => {
+                    console.log("Done spinning")
+                    setChosenFood(randomChosenFood)
+                    setFoodList([])
+                    setSpinning(false)
+                }}>
                     {expandedList.map((food, i) => {
                         return <li key={i} className='scrollerItem'>{food}</li>
                     })}

@@ -11,6 +11,7 @@ import { Navbar, Button, Row, Container } from 'react-bootstrap'
 
 const App = () => {
   const [foodList, setFoodList] = useState([])
+  // const [foodList, setFoodList] = useState(["apple", "pineapple", "pizza", "hot dog"])
   const [showFoodList, setShowFoodList] = useState(true)
   const [foodInput, setFoodInput] = useState('')
   const [chosenFood, setChosenFood] = useState('')
@@ -183,7 +184,8 @@ const App = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         setCoordinates({ longitude: position.coords.longitude, latitude: position.coords.latitude })
-        console.log(coordinates)
+        setShowFoodList(false)
+        setSpinning(true)
       }, showError, { enableHighAccuracy: true, maximumAge: 0, timeout: 5000 })
     } else {
       setErrorMessage('Geolocation is not supported by this browser')
@@ -266,7 +268,6 @@ const App = () => {
           </ol>
         </Row>
       </Container>
-
 
       <Container>
         <Row className="justify-content-center" ref={addItemsRef}>
