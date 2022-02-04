@@ -252,7 +252,7 @@ const App = () => {
 
       <Container id="main">
         <Row className="tutorial-div">
-        <img src={require('./images/dishes.svg')} style={{ width: '16rem' }} alt='dishes with smiley face' />
+        <img className="dish-img" src={require('./images/dishes.svg')} style={{ width: '16rem' }} alt='dishes with smiley face' />
 
           <ol>
             <h1>How to use</h1>
