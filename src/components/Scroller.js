@@ -7,8 +7,10 @@ const Scroller = ({foodList, setChosenFood, setSpinning, setFoodList, spinning, 
     useEffect(() => {
         if (spinning) {
             let arr = foodList.concat(foodList)
+            if (foodList.length < 10) {
+                arr = [].concat(...Array(5).fill(arr));
+            }
             let randomFood = foodList[Math.floor(Math.random() * foodList.length)]
-            console.log(randomFood)
             setExpandedList(arr)
             setRandomChosenFood(randomFood)
         }
@@ -23,9 +25,11 @@ const Scroller = ({foodList, setChosenFood, setSpinning, setFoodList, spinning, 
         <div className='scroller'>
             <div className='box'>
                 <ul className='scrollerList' ref={scrollerRef} onAnimationEnd={() => {
-                    setChosenFood(randomChosenFood)
-                    setFoodList([])
-                    setSpinning(false)
+                    setTimeout(() => {
+                        setChosenFood(randomChosenFood)
+                        setFoodList([])
+                        setSpinning(false)
+                    }, 2000)
                 }}>
                     {expandedList.map((food, i) => {
                         return <li key={i} className='scrollerItem'>{food}</li>

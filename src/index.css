@@ -173,7 +173,7 @@ body {
 .scrollerList {
   margin-top: 15px; 
   padding: 0;
-  animation: scrollUp 4s forwards, colorGradient 4s forwards;
+  animation: scrollUp ease-in-out 6s forwards, colorGradient ease-in-out 6s forwards;
   /* animation-name: scrollUp;
   animation-duration: 4s;
   animation-fill-mode: forwards;
